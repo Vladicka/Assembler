@@ -1,6 +1,6 @@
 data segment
-    x db 17
-    y db 25
+    x db 127
+    y db 128
     divider db 10
     buff db (?)
 data ends
@@ -8,20 +8,22 @@ data ends
 code segment
 start:
     assume cs:code, ds: data
-    mov ax, data
-    mov ds, ax 
-    mov bh, x
-    add bh, y
-    mov al, bh;
+    mov bx, data
+    mov ds, bx 
+    mov al, x
+    add al, y
     div divider
-    mov buff[2], '$'
+    add ah, 48
+    mov buff[2], ah
+    mov ah, 0
+    div divider
     add ah, 48
     mov buff[1], ah
-    div divider
-    add ah, 48
-    mov buff[0], ah
+    add al, 48
+    mov buff[0], al 
+    mov buff[3], '$'
     mov ah, 9
-    lea dx, buff
+    mov dx, offset buff
     int 21h
     mov ax, 4c00h
     int 21h    
