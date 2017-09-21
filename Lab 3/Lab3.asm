@@ -95,5 +95,5 @@ saber:
     int 21h
     mov ax, 4c00h
     int 21h
-servents ends
 end archer
+servents ends
