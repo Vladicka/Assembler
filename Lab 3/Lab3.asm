@@ -7,6 +7,8 @@ archer:
     assume cs:servents, ds:fate
     mov ax, fate
     mov ah, 1
+    mov dx, 0
+    mov cx, 0
     int 21h
     mov bh, al
     sub bh, 48
@@ -24,15 +26,12 @@ archer:
     jmp caster
     
 assassin:
-    mov dh, bh
-    mov bh, 0
-    mov ch, 0
+    xchg dh, bh
     jmp caster
    
 berserker:
-    mov dh, ch
-    mov ch, bh
-    mov bh, 0
+    xchg dh, ch
+    xchg ch, bh
     jmp caster
 
 caster:
@@ -53,15 +52,12 @@ caster:
     jmp saber
     
 lancer:
-    mov dl, bl
-    mov bl, 0
-    mov cl, 0
+    xchg dl, bl
     jmp saber
     
 rider:
-    mov dl, cl
-    mov cl, bl
-    mov bl, 0
+    xchg dl, cl
+    xchg cl, bl
     jmp saber
 
 saber:
