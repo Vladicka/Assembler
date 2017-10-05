@@ -5,7 +5,7 @@ dividing macro
 endm
 
 data segment
-    sum dw 1
+    sum dw 2
     buff db ?
 data ends
 
@@ -15,7 +15,7 @@ Masami:
     mov ax, data
     mov ds, ax
     xor ax, ax
-    mov ah, 1
+    mov ah, 2
     mov dx, 1
     mov cx, 1
     
